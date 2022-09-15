@@ -11,6 +11,7 @@
     <RepositoryUrl>https://github.com/TeamDoodz/BinaryConversion.git</RepositoryUrl>
     <PackageTags>binary,serialization,binary serialization,save,load</PackageTags>
     <PackageLicenseExpression> Apache-2.0</PackageLicenseExpression>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
 </Project>
