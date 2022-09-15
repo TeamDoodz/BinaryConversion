@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
+    <Company>TeamDoodz</Company>
+    <Authors>TeamDoodz</Authors>
+    <Description>A binary serialization library for .NET</Description>
+    <PackageProjectUrl>https://github.com/TeamDoodz/BinaryConversion</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/TeamDoodz/BinaryConversion.git</RepositoryUrl>
+    <PackageTags>binary,serialization,binary serialization,save,load</PackageTags>
+    <PackageLicenseExpression> Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>
