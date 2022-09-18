@@ -23,6 +23,7 @@ namespace BinaryConversion {
 			new KeyValuePairBinaryConverter(),
 			new AssemblyBinaryConverter(),
 			new TypeBinaryConverter(),
+			new NullableBinaryConverter(),
 			new AutomaticBinaryConverter()
 		};
 
