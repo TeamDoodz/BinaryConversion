@@ -59,6 +59,20 @@ steve = BinaryConvert.LoadFromFile<CharacterData>("Steve.character");
 Console.WriteLine(steve.Level); // 2
 ```
 
+## Supported Types
+
+By default, BinaryConversion has support for the following types:
+
+* All core C# types (`int`, `bool`, etc)
+* Nullable structs (`int?`, `bool?`, etc)
+* Arrays
+* Any type that implements the `ICollection<T>` interface
+* References to `Type`s and `Assembly`s
+* `KeyValuePair<TKey,TValue>`
+* `DateTime`
+
+If you try to convert a type not listed here, the serializer will try to automatically convert it based on its public fields.
+
 ## The IBinarySerializable Interface
 
 `IBinarySerializable` allows classes to define their own custom methods for serialization. For example, here is how the `CharacterData` class could implement this interface:
@@ -90,7 +104,7 @@ public class CharacterData : IBinarySerializable {
 Although `IBinarySerializable` is easy to use, it has some downsides:
 
 1. You have no control over how an object is created before it is deserialized.
-2. It can only be used with classes; structs and interfaces cannot implement it.
+2. It can only be used with classes and structs; interfaces cannot implement it.
 3. It cannot be used in external classes that you do not have control over.
 4. Classes that implement the interface gain a dependency to the library, and won't compile without it.
 
