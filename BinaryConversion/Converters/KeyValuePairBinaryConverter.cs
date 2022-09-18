@@ -20,14 +20,13 @@ namespace BinaryConversion.Converters {
 		}
 
 		public override object Read(BinaryReader reader, Type returnType, BinarySerializer serializer) {
-
 			Type keyType = returnType.GenericTypeArguments[0];
 			Type valueType = returnType.GenericTypeArguments[1];
 
-			return Activator.CreateInstance(returnType, new object[] {
-				serializer.FromBinary(keyType, reader),
-				serializer.FromBinary(valueType, reader),
-			});
+			object key = serializer.FromBinary(keyType, reader);
+			object value = serializer.FromBinary(valueType, reader);
+
+			return CreateKeyValuePair(keyType, valueType, key, value);
 		}
 
 		public override void Write(BinaryWriter writer, Type returnType, object value, BinarySerializer serializer) {
@@ -42,6 +41,13 @@ namespace BinaryConversion.Converters {
 
 			serializer.ToBinary(keyType, key, writer);
 			serializer.ToBinary(valueType, val, writer);
+		}
+
+		private static object CreateKeyValuePair(Type TKey, Type TValue, object key, object value) {
+			return typeof(KeyValuePair<,>)
+				.MakeGenericType(TKey, TValue)
+				.GetConstructor(new Type[] { TKey, TValue })
+				.Invoke(new object[] { key, value });
 		}
 	}
 }
